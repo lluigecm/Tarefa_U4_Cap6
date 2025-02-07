@@ -39,13 +39,12 @@ int main()
     bool cor = true;
     while (true) {
 
-        cor = !cor;
-
         ssd1306_fill(&ssd, cor); // Limpa o display
-        ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
-        ssd1306_draw_string(&ssd, "Testando Oled", 8, 10);
-        ssd1306_draw_string(&ssd, "Embarca Tech", 20, 30);
-        ssd1306_draw_string(&ssd, "Lucas Luige", 15, 48);
+        ssd1306_rect(&ssd, 3, 3, 122, 58, !cor, cor); // Desenha um retângulo
+        ssd1306_draw_string(&ssd, "abcdefghijk", 20, 10);
+        ssd1306_draw_string(&ssd, "lmnopqrstuv", 20, 20);
+        ssd1306_draw_string(&ssd, "wxyz", 20, 30);
+        ssd1306_draw_string(&ssd, "Teste minuscula", 3, 50);
         ssd1306_send_data(&ssd); // Envia os dados para o display
 
         sleep_ms(2000);
