@@ -35,10 +35,13 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Tarefa_U4_Cap6 Tarefa_U4_Cap6.c inc/ssd1306.c)
+add_executable(Tarefa_U4_Cap6 Tarefa_U4_Cap6.c matriz_leds.c inc/ssd1306.c)
 
 pico_set_program_name(Tarefa_U4_Cap6 "Tarefa_U4_Cap6")
 pico_set_program_version(Tarefa_U4_Cap6 "0.1")
+
+# Generate PIO header
+pico_generate_pio_header(${CMAKE_PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/pio_matrix.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(Tarefa_U4_Cap6 1)
