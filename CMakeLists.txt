@@ -44,7 +44,7 @@ pico_set_program_version(Tarefa_U4_Cap6 "0.1")
 pico_generate_pio_header(${CMAKE_PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/pio_matrix.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(Tarefa_U4_Cap6 1)
+pico_enable_stdio_uart(Tarefa_U4_Cap6 0)
 pico_enable_stdio_usb(Tarefa_U4_Cap6 1)
 
 # Add the standard library to the build
