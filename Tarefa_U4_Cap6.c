@@ -176,13 +176,14 @@ bool debounce(){
 
 void button_callback(int gpio, uint32_t events){
     if(debounce()){
-       if(gpio == BUTTON_A){
+        ssd1306_fill(&ssd, cor); // Limpa o display
+        ssd1306_rect(&ssd, 3, 3, 122, 58, !cor, cor); // Desenha um retângulo
+        
+        if(gpio == BUTTON_A){
         
             gpio_put(GREEN_LED, !gpio_get(GREEN_LED));;     // Alterna o estado do LED
             printf("Botão A pressionado e LED verde alternado\n");
         
-            ssd1306_fill(&ssd, cor); // Limpa o display
-            ssd1306_rect(&ssd, 3, 3, 122, 58, !cor, cor); // Desenha um retângulo
             ssd1306_draw_string(&ssd, "LED Verde", 30, 10);
         
             if(gpio_get(GREEN_LED)){
@@ -191,7 +192,6 @@ void button_callback(int gpio, uint32_t events){
                 ssd1306_draw_string(&ssd, "Desligado", 30, 25);
             }
         
-            ssd1306_send_data(&ssd); // Envia os dados para o display
         }
         
         if(gpio == BUTTON_B){
@@ -199,8 +199,6 @@ void button_callback(int gpio, uint32_t events){
             gpio_put(BLUE_LED, !gpio_get(BLUE_LED));    // Alterna o estado do LED
             printf("Botão B pressionado e LED azul alternado\n");
             
-            ssd1306_fill(&ssd, cor); // Limpa o display
-            ssd1306_rect(&ssd, 3, 3, 122, 58, !cor, cor); // Desenha um retângulo
             ssd1306_draw_string(&ssd, "LED Azul", 30, 10);
             
             if(gpio_get(BLUE_LED)){
@@ -209,8 +207,8 @@ void button_callback(int gpio, uint32_t events){
                 ssd1306_draw_string(&ssd, "Desligado", 30, 25);
             }
 
-            ssd1306_send_data(&ssd); // Envia os dados para o display
         }
+        ssd1306_send_data(&ssd); // Envia os dados para o display
     }
 }
 
