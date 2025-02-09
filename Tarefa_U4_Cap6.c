@@ -186,13 +186,8 @@ void button_callback(int gpio, uint32_t events){
         
             ssd1306_draw_string(&ssd, "LED Verde", 30, 10);
         
-            if(gpio_get(GREEN_LED)){
-                ssd1306_draw_string(&ssd, "Ligado", 30, 25);
-            }else{
-                ssd1306_draw_string(&ssd, "Desligado", 30, 25);
+            ssd1306_draw_string(&ssd, gpio_get(GREEN_LED) ? "Ligado" : "Desligado", 30, 25);
             }
-        
-        }
         
         if(gpio == BUTTON_B){
 
@@ -201,11 +196,7 @@ void button_callback(int gpio, uint32_t events){
             
             ssd1306_draw_string(&ssd, "LED Azul", 30, 10);
             
-            if(gpio_get(BLUE_LED)){
-                ssd1306_draw_string(&ssd, "Ligado", 30, 25);
-            }else{
-                ssd1306_draw_string(&ssd, "Desligado", 30, 25);
-            }
+            ssd1306_draw_string(&ssd, gpio_get(BLUE_LED) ? "Ligado" : "Desligado", 30, 25);
 
         }
         ssd1306_send_data(&ssd); // Envia os dados para o display
