@@ -1,4 +1,0 @@
-[wokwi]
-version = 1
-firmware = 'build/Tarefa_U4_Cap6.uf2'
-elf = 'build/Tarefa_U4_Cap6.elf'
